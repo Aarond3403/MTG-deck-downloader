@@ -1,6 +1,6 @@
 # MTG Deck Image Downloader
 
-This tool downloads Magic: The Gathering card images and saves the deck list as a text file.
+This tool downloads Magic: The Gathering card images and saves the deck list as image files. (and also text files too)
 
 ## Requirements
 - Python 3.x you can get it from www.python.org/downloads/  if you don't have it 

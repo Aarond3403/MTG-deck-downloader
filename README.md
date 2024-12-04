@@ -8,13 +8,9 @@ This tool downloads Magic: The Gathering card images and saves the deck list as 
 - internet
 
 HOW TO USE
-Step 1: PREPARE THE PROGRAM FOR FUTURE USE
-
- run "Run this Second.bat" and run it as admin (some things might break if you dont but it works without it sometimes) it will ask you for a path so right click the "Downloaded files" folder and copy as path, paste it inside where it asks you (remove the parenthesis or it wont work) and it should work and end up in that folder (it saves the path so you don't have to do it multiple times) 
+Step 1: 
+UNZIP ZIP FILE TO FOLDER
+then put in your mtg friends from and add another line that says DONE and click enter and it should start :D (INPORTANT: UNCHECK ALL archidekt EXPORT OPTIONS OR IT WILL NOT WORK) if you want to test the program to see if the programs just broken or you messed something up you can with the txt file called: test mtg friends to test it to see if it works.txt and copy and paste that
 
 Step 2: 
-
-then put in your mtg friends from and add another line that says DONE and it should start :D (INPORTANT: UNCHECK ALL archidekt EXPORT OPTIONS OR IT WILL NOT WORK) if you want to test the program you can with the txt file called: test mtg friends to test it to see if it works.txt
-
-Step 3: 
-to find the images it is in the Downloaded files folder in this folder
+to find the images it is in the Downloaded files folder in this zip folder thingy

@@ -10,7 +10,10 @@ This tool downloads Magic: The Gathering card images and saves the deck list as 
 HOW TO USE
 Step 1: 
 UNZIP ZIP FILE TO FOLDER
-then put in your mtg friends from and add another line that says DONE and click enter and it should start :D (INPORTANT: UNCHECK ALL archidekt EXPORT OPTIONS OR IT WILL NOT WORK) if you want to test the program to see if the programs just broken or you messed something up you can with the txt file called: test mtg friends to test it to see if it works.txt and copy and paste that
+then run run this second.bat as admin (it might break without admin but mabye not idk ¯\_(ツ)_/¯) put in your mtg friends from archidekt (INPORTANT: UNCHECK ALL archidekt EXPORT OPTIONS OR IT WILL NOT WORK) and add another line that says DONE and press enter and it should start :D if you want to test the program to see if the program is just broken or you messed something up you can with the txt file called: test mtg friends to test it to see if it works.txt and copy and paste that
 
 Step 2: 
-to find the images it is in the Downloaded files folder in this zip folder thingy
+to find the images it is in the Downloaded files folder in this zip folder thingy (the folder should auto generate if you did everything correctly)
+
+
+skibidi

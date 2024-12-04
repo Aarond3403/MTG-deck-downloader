@@ -1,5 +1,15 @@
 import os
-import requests
+import subprocess
+import sys
+
+# Try importing the requests library
+try:
+    import requests
+except ImportError:
+    # If requests is not installed, install it automatically
+    print("The 'requests' library is not installed. Installing it now...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "requests"])
+    import requests  # Import again after installation
 
 SCRYFALL_API = "https://api.scryfall.com/cards/named"
 

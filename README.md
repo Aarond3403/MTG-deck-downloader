@@ -16,4 +16,4 @@ Step 2:
 to find the images it is in the Downloaded files folder in this zip folder thingy (the folder should auto generate if you did everything correctly)
 
 
-skibidi
+if my mtg deck downloader is too stupid, check out my friends version :) https://github.com/SuperiorTabby/MTG-Card-Printer

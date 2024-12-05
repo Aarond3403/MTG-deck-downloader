@@ -25,8 +25,9 @@ SCRYFALL_API = "https://api.scryfall.com/cards/named"
 BASE_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_OUTPUT_DIR = os.path.join(BASE_DIRECTORY, "Downloaded Files")
 
-# ANSI escape code for red text
+# ANSI escape codes for colors
 RED = "\033[91m"
+GREEN = "\033[92m"
 RESET = "\033[0m"
 
 def parse_deck(deck_text):
@@ -54,7 +55,7 @@ def download_card_image(card_name, output_dir):
         response.raise_for_status()
         card_data = response.json()
         if "image_uris" not in card_data:
-            return f"No image data available for {card_name}."
+            return f"{RED}No image data available for {card_name}.{RESET}"
         
         image_url = card_data["image_uris"]["normal"]
         
@@ -66,9 +67,9 @@ def download_card_image(card_name, output_dir):
         file_name = os.path.join(output_dir, f"{card_name.replace(' ', '_')}.jpg")
         with open(file_name, "wb") as f:
             f.write(image_response.content)
-        return f"Downloaded: {card_name}"
+        return f"{GREEN}Downloaded: {card_name}{RESET}"
     except requests.exceptions.RequestException as e:
-        return f"Failed to download {card_name}: {e}"
+        return f"{RED}Failed to download {card_name}: {e}{RESET}"
 
 def save_deck(deck, output_dir):
     """
@@ -79,7 +80,7 @@ def save_deck(deck, output_dir):
         with open(deck_file, "w") as f:
             for card in deck:
                 f.write(f"{card['quantity']} {card['name']}\n")
-        print(f"Deck saved to {deck_file}")
+        print(f"{GREEN}Deck saved to {deck_file}{RESET}")
     except Exception as e:
         print(f"{RED}Failed to save deck: {e}{RESET}")
 
@@ -111,7 +112,7 @@ def main():
                     result = future.result()
                     if result:
                         print(result)
-            print("\nAll tasks completed successfully.")
+            print(f"\n{GREEN}All tasks completed successfully.{RESET}")
         else:
             print(f"{RED}No valid cards found in the input.{RESET}")
     except Exception as e:

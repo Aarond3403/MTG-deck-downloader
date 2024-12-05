@@ -18,7 +18,7 @@ to find the images it is in the Downloaded files folder in this zip folder thing
 
 ## Troubleshooting
 
-If you get any errors that have to do with "requests" then my auto installer is broken and do this instead to fix it
+If you get any errors (that are red) [if they are not red they are not errors prob] that have to do with "requests" then my auto installer is broken and do this instead to fix it
 1: go to command prompt terminal thing (its called cmd) and run that as admin
 2: enter "pip install requests"
 3: it will install and it will work

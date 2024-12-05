@@ -1,20 +1,28 @@
 import os
 import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Try importing the requests library
 try:
     import requests
 except ImportError:
-    # If requests is not installed, install it automatically
     print("The 'requests' library is not installed. Installing it now...")
     subprocess.check_call([sys.executable, "-m", "pip", "install", "requests"])
-    import requests  # Import again after installation
+    import requests
+
+# Try importing tqdm for progress bar
+try:
+    from tqdm import tqdm
+except ImportError:
+    print("The 'tqdm' library is not installed. Installing it now...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "tqdm"])
+    from tqdm import tqdm
 
 SCRYFALL_API = "https://api.scryfall.com/cards/named"
 
 # Define the folder for downloaded files
-BASE_DIRECTORY = os.path.dirname(os.path.abspath(__file__))  # Directory of the script
+BASE_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_OUTPUT_DIR = os.path.join(BASE_DIRECTORY, "Downloaded Files")
 
 # ANSI escape code for red text
@@ -33,7 +41,7 @@ def parse_deck(deck_text):
                 quantity, *card_name = line.split(" ", 1)
                 deck.append({"quantity": int(quantity), "name": card_name[0].strip()})
             except ValueError:
-                print(f"{RED}Skipping invalid line: {line}{RESET}")
+                print(f"{RED}Skipping invalid line (could not parse): {line}{RESET}")
     return deck
 
 def download_card_image(card_name, output_dir):
@@ -45,6 +53,9 @@ def download_card_image(card_name, output_dir):
         response = requests.get(SCRYFALL_API, params=params)
         response.raise_for_status()
         card_data = response.json()
+        if "image_uris" not in card_data:
+            return f"No image data available for {card_name}."
+        
         image_url = card_data["image_uris"]["normal"]
         
         # Download the image
@@ -55,9 +66,9 @@ def download_card_image(card_name, output_dir):
         file_name = os.path.join(output_dir, f"{card_name.replace(' ', '_')}.jpg")
         with open(file_name, "wb") as f:
             f.write(image_response.content)
-        print(f"Downloaded: {card_name}")
+        return f"Downloaded: {card_name}"
     except requests.exceptions.RequestException as e:
-        print(f"{RED}Failed to download {card_name}: {e}{RESET}")
+        return f"Failed to download {card_name}: {e}"
 
 def save_deck(deck, output_dir):
     """
@@ -74,7 +85,6 @@ def save_deck(deck, output_dir):
 
 def main():
     try:
-        # Ensure the default output directory exists
         if not os.path.exists(DEFAULT_OUTPUT_DIR):
             os.makedirs(DEFAULT_OUTPUT_DIR)
             print(f"Directory {DEFAULT_OUTPUT_DIR} created.")
@@ -89,21 +99,23 @@ def main():
 
         deck = parse_deck(deck_text)
         if deck:
-            # Save deck list to the default directory
             save_deck(deck, DEFAULT_OUTPUT_DIR)
-
-            # Create an output directory for images within the default location
             image_dir = os.path.join(DEFAULT_OUTPUT_DIR, "card_images")
             os.makedirs(image_dir, exist_ok=True)
 
-            # Download images for each card
-            for card in deck:
-                download_card_image(card["name"], image_dir)
+            # Use multi-threading for downloads
+            print("\nDownloading card images with multi-threading:")
+            with ThreadPoolExecutor() as executor:
+                futures = {executor.submit(download_card_image, card["name"], image_dir): card for card in deck}
+                for future in tqdm(as_completed(futures), total=len(futures), desc="Downloading"):
+                    result = future.result()
+                    if result:
+                        print(result)
             print("\nAll tasks completed successfully.")
         else:
             print(f"{RED}No valid cards found in the input.{RESET}")
     except Exception as e:
-        print(f"{RED}An error occurred: {e}{RESET}")
+        print(f"{RED}An unexpected error occurred: {e}{RESET}")
     
     input("\nProcessing complete. Press Enter to exit...")
 

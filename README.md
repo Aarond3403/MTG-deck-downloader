@@ -11,7 +11,7 @@ This tool downloads Magic: The Gathering card images and saves the deck list as 
 unzip file to folder
 
 ### Step 2:
- run the thing called run this second.bat (it might be called click me in future versions) as admin (it might break without admin but mabye not idk ¯\_(ツ)_/¯) put in your mtg friends from archidekt (INPORTANT: UNCHECK ALL ARCHIDEKT EXPORT OPTIONS OR IT WILL NOT WORK) and add another line that says DONE and press enter and it should start :D
+ run the thing called Click Me.bat (its called click this second in older versions) and run it as admin (it might work without but idk) put in your mtg friends from archidekt (INPORTANT: UNCHECK ALL ARCHIDEKT EXPORT OPTIONS OR IT WILL NOT WORK) and add another line that says DONE and press enter and it should start :D
 
 ### Step 3: 
 to find the images it is in the Downloaded files folder in this zip folder thingy (the folder should auto generate if you did everything correctly)

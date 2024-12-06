@@ -28,9 +28,9 @@ Issue: Invalid Card or Deck Parsing Issues
 If the program says something like invalid card:
 
 Make sure you're using the correct export options in Archidekt. UNCHECK ALL OPTIONS like this:
-
-
-
+![Screenshot 2024-12-04 122330](https://github.com/user-attachments/assets/7cabf00a-5220-4f36-83f2-88648f7a1c00)
+![Screenshot 2024-12-04 122414](https://github.com/user-attachments/assets/d939c3a4-71b0-48db-ae03-3de13b06a2ec)
+![Screenshot 2024-12-04 122543](https://github.com/user-attachments/assets/6bfb558b-9e8b-4df4-8d42-45c9cf81c23a)
 Add a new line and type DONE before pressing Enter.
 
 Testing the Program

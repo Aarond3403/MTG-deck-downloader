@@ -9,7 +9,7 @@ Internet connection
 Extract all files from the provided .zip to a folder of your choice.
 
 ## Step 2: Run the Program
-Find the file named Click Me.bat (in older versions, it’s called Click This Second) and run it as admin. It might work without admin rights, but it’s safer this way.
+Find the file named Click Me.bat (in older versions, it’s called Click This Second) and run it as admin. It works without admin too, its just sometimes it breaks without.
 Copy and paste your MTG deck list from Archidekt into the program.
 IMPORTANT: When exporting from Archidekt, UNCHECK ALL OPTIONS
 Add a new line to your deck list and type DONE, then press Enter. The program will begin downloading your cards and saving your deck. :D
@@ -31,7 +31,8 @@ Make sure you're using the correct export options in Archidekt. UNCHECK ALL OPTI
 
 
 
-Add a new line and type DONE (exactly as shown) before pressing Enter.
+Add a new line and type DONE before pressing Enter.
+
 Testing the Program
 If you’re unsure whether the program is broken or if you made a mistake, use the provided test deck file: test mtg friends to test it to see if it works.txt. Copy and paste its contents into the program to verify.
 
@@ -39,7 +40,7 @@ Issue: Missing Python
 If you see errors related to Python not being installed, download it here: www.python.org/downloads/.
 
 Credits
-If my MTG Deck Downloader doesn't meet your needs, check out my friend’s version:
+If my MTG Deck Downloader is too dumb, check out my friend’s version:
 SuperiorTabby/MTG-Card-Printer
 
 Happy deck building! :D

@@ -11,7 +11,7 @@ Extract all files from the provided .zip to a folder of your choice.
 ## Step 2: Run the Program
 Find the file named Click Me.bat (in older versions, it’s called Click This Second) and run it as admin. It might work without admin rights, but it’s safer this way.
 Copy and paste your MTG deck list from Archidekt into the program.
-IMPORTANT: When exporting from Archidekt, UNCHECK ALL OPTIONS (e.g., include prices, tags, etc.).
+IMPORTANT: When exporting from Archidekt, UNCHECK ALL OPTIONS
 Add a new line to your deck list and type DONE, then press Enter. The program will begin downloading your cards and saving your deck. :D
 
 ## Step 3: Find Your Files

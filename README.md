@@ -1,37 +1,46 @@
 # MTG Deck Image Downloader
-
-This tool downloads Magic: The Gathering card images and saves the deck list as image files. (and also text files too)
+This tool downloads Magic: The Gathering card images and saves the deck list as both image files and text files. It's designed to make sharing and printing your MTG decks easier!
 
 ## Requirements
-- Python 3.x you can get it from www.python.org/downloads/  if you don't have it 
-- internet
+Python 3.x (Download it from www.python.org/downloads/ if you don't have it installed)
+Internet connection
+## How to Use
+## Step 1: Unzip the File
+Extract all files from the provided .zip to a folder of your choice.
 
-## HOW TO USE
-### Step 1: 
-unzip file to folder
+## Step 2: Run the Program
+Find the file named Click Me.bat (in older versions, it’s called Click This Second) and run it as admin. It might work without admin rights, but it’s safer this way.
+Copy and paste your MTG deck list from Archidekt into the program.
+IMPORTANT: When exporting from Archidekt, UNCHECK ALL OPTIONS (e.g., include prices, tags, etc.).
+Add a new line to your deck list and type DONE, then press Enter. The program will begin downloading your cards and saving your deck. :D
 
-### Step 2:
- run the thing called Click Me.bat (its called click this second in older versions) and run it as admin (it might work without but idk) put in your mtg friends from archidekt (INPORTANT: UNCHECK ALL ARCHIDEKT EXPORT OPTIONS OR IT WILL NOT WORK) and add another line that says DONE and press enter and it should start :D
-
-### Step 3: 
-to find the images it is in the Downloaded files folder in this zip folder thingy (the folder should auto generate if you did everything correctly)
+## Step 3: Find Your Files
+All images and deck files are saved in the Downloaded Files folder, which will be auto-generated in the program’s folder if everything works correctly.
 
 ## Troubleshooting
+Issue: Errors About Missing Libraries (e.g., "requests")
+If you see errors related to missing libraries (usually marked in red) like "requests," my auto-installer might have failed. Here’s how to fix it:
 
-If you get any errors (that are red) [if they are not red they are not errors prob] that have to do with "requests" then my auto installer is broken and do this instead to fix it
-1: go to command prompt terminal thing (its called cmd) and run that as admin
-2: enter "pip install requests"
-3: it will install and it will work
+Open Command Prompt (search for "cmd") and run it as admin.
+Type: pip install requests and press Enter.
+The library will install, and the program should work.
+Issue: Invalid Card or Deck Parsing Issues
+If the program says something like invalid card:
 
-
-if it says anything like invalid card or something like that then make sure you use these options
-![Screenshot 2024-12-04 122330](https://github.com/user-attachments/assets/7cabf00a-5220-4f36-83f2-88648f7a1c00)
-![Screenshot 2024-12-04 122414](https://github.com/user-attachments/assets/d939c3a4-71b0-48db-ae03-3de13b06a2ec)
-![Screenshot 2024-12-04 122543](https://github.com/user-attachments/assets/6bfb558b-9e8b-4df4-8d42-45c9cf81c23a)
-and also to start it make another line with enter and type exactly DONE and click enter
-another thing you can do is if you want to test the program to see if the program is just broken or you messed something up you can with the txt file called: test mtg friends to test it to see if it works.txt and copy and paste that
-
-if it says anything about python and its not installed install it here www.python.org/downloads/
+Make sure you're using the correct export options in Archidekt. UNCHECK ALL OPTIONS like this:
 
 
-if my mtg deck downloader is too stupid, check out my friends version :) https://github.com/SuperiorTabby/MTG-Card-Printer
+
+Add a new line and type DONE (exactly as shown) before pressing Enter.
+Testing the Program
+If you’re unsure whether the program is broken or if you made a mistake, use the provided test deck file: test mtg friends to test it to see if it works.txt. Copy and paste its contents into the program to verify.
+
+Issue: Missing Python
+If you see errors related to Python not being installed, download it here: www.python.org/downloads/.
+
+Credits
+If my MTG Deck Downloader doesn't meet your needs, check out my friend’s version:
+SuperiorTabby/MTG-Card-Printer
+
+Happy deck building! :D
+

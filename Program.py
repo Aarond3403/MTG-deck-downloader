@@ -2,6 +2,7 @@ import os
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import re
 
 # Try importing the requests library
 try:
@@ -30,6 +31,12 @@ RED = "\033[91m"
 GREEN = "\033[92m"
 RESET = "\033[0m"
 
+def sanitize_filename(filename):
+    """
+    Removes or replaces characters in the filename that are invalid for the OS.
+    """
+    return re.sub(r'[\\/*?:"<>|]', '_', filename)
+
 def parse_deck(deck_text):
     """
     Parses a decklist from the input text and returns a list of card dictionaries with their quantities.
@@ -45,7 +52,7 @@ def parse_deck(deck_text):
                 print(f"{RED}Skipping invalid line (could not parse): {line}{RESET}")
     return deck
 
-def download_card_image(card_name, output_dir):
+def download_card_image(card_name, output_dir, quantity=1):
     """
     Fetches the image URL from Scryfall and downloads the card image.
     """
@@ -63,11 +70,14 @@ def download_card_image(card_name, output_dir):
         image_response = requests.get(image_url)
         image_response.raise_for_status()
         
-        # Save the image
-        file_name = os.path.join(output_dir, f"{card_name.replace(' ', '_')}.jpg")
-        with open(file_name, "wb") as f:
-            f.write(image_response.content)
-        return f"{GREEN}Downloaded: {card_name}{RESET}"
+        # Save the images for the given quantity
+        for i in range(1, quantity + 1):
+            sanitized_name = sanitize_filename(f"{card_name}_copy{i}")
+            file_name = os.path.join(output_dir, f"{sanitized_name}.jpg")
+            with open(file_name, "wb") as f:
+                f.write(image_response.content)
+        
+        return f"{GREEN}Downloaded: {card_name} (x{quantity}){RESET}"
     except requests.exceptions.RequestException as e:
         return f"{RED}Failed to download {card_name}: {e}{RESET}"
 
@@ -107,7 +117,10 @@ def main():
             # Use multi-threading for downloads
             print("\nDownloading card images with multi-threading:")
             with ThreadPoolExecutor() as executor:
-                futures = {executor.submit(download_card_image, card["name"], image_dir): card for card in deck}
+                futures = {
+                    executor.submit(download_card_image, card["name"], image_dir, card["quantity"]): card
+                    for card in deck
+                }
                 for future in tqdm(as_completed(futures), total=len(futures), desc="Downloading"):
                     result = future.result()
                     if result:
